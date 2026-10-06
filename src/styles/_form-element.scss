@@ -1,0 +1,47 @@
+// =============================================================
+// _form-element.scss — search input and select
+// =============================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+/* Wrapper for label + control */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  min-width: 0;
+}
+
+/* Small label above each control */
+.form-label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $grey-b2;
+}
+
+/* Shared input + select look */
+.form-input,
+.form-select {
+  width: 100%;
+  min-height: $control-height;
+  padding: 0 $space-3;
+  border: $border-width solid $grey-b3;
+  border-radius: $radius-md;
+  background: $white-b1;
+  color: $navy-b1;
+  font-size: $font-size-sm;
+  @include focus-ring;
+
+  &::placeholder {
+    color: $grey-b2;
+  }
+
+  @include below($bp-640) {
+    min-height: $tap-target-min;
+    font-size: $font-size-md; // 16px stops iOS zooming into the field
+  }
+}
+
+.form-select {
+  cursor: pointer;
+}

@@ -1,0 +1,200 @@
+// =============================================================
+// _component.scss — shared, reusable components
+// (page heading, state block, skeleton, status tag, pagination)
+// =============================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+/* ---------- Page container ---------- */
+.page-container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  @include below($bp-768) {
+    padding: $space-5 $space-4;
+    gap: $space-4;
+  }
+}
+
+/* ---------- Page heading ---------- */
+.page-heading {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.page-heading-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $navy-b1;
+
+  @include below($bp-640) {
+    font-size: $font-size-lg;
+  }
+}
+
+.page-heading-description {
+  font-size: $font-size-sm;
+  color: $grey-b2;
+}
+
+/* ---------- Card surface ---------- */
+.surface-card {
+  background: $white-b1;
+  border: $border-width solid $grey-b3;
+  border-radius: $radius-md;
+  min-width: 0;
+}
+
+/* ---------- State block (empty / no results / error) ---------- */
+.state-block {
+  max-width: $state-block-max-width;
+  margin: 0 auto;
+  padding: $space-8 $space-4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+  text-align: center;
+}
+
+.state-block-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $navy-b1;
+}
+
+.state-block-message {
+  font-size: $font-size-sm;
+  color: $grey-b1;
+  overflow-wrap: anywhere;
+}
+
+/* Error variant: red title */
+.state-block-error .state-block-title {
+  color: $red-b1;
+}
+
+/* ---------- Skeleton (loading) ---------- */
+.skeleton-line {
+  display: block;
+  height: $skeleton-line-height;
+  width: $skeleton-line-long;
+  border-radius: $radius-sm;
+  background: $grey-b3;
+  animation: skeleton-pulse $skeleton-pulse-duration ease-in-out infinite alternate;
+}
+
+.skeleton-line-short {
+  width: $skeleton-line-short;
+}
+
+@keyframes skeleton-pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: $opacity-pulse-low;
+  }
+}
+
+/* ---------- Status tag ---------- */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-1 $space-3;
+  border-radius: $radius-pill;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.status-tag-active {
+  background: $green-b2;
+  color: $green-b1;
+}
+
+.status-tag-on-leave {
+  background: $amber-b2;
+  color: $amber-b1;
+}
+
+.status-tag-graduated {
+  background: $violet-b2;
+  color: $violet-b1;
+}
+
+/* ---------- Pagination ---------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  border-top: $border-width solid $grey-b3;
+
+  @include below($bp-640) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.pagination-summary {
+  font-size: $font-size-sm;
+  color: $grey-b2;
+
+  @include below($bp-640) {
+    text-align: center;
+  }
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  @include below($bp-640) {
+    justify-content: center;
+  }
+}
+
+.pagination-button {
+  min-width: $control-height;
+  min-height: $control-height;
+  padding: 0 $space-3;
+  border: $border-width solid transparent;
+  border-radius: $radius-md;
+  background: transparent;
+  color: $grey-b1;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  @include focus-ring;
+
+  &:hover:not(:disabled) {
+    background: $grey-b4;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
+  @include below($bp-640) {
+    min-width: $tap-target-min;
+    min-height: $tap-target-min;
+  }
+}
+
+/* Current page */
+.pagination-button-current {
+  background: $blue-b2;
+  border-color: $blue-b1;
+  color: $blue-b1;
+  font-weight: $font-weight-bold;
+}

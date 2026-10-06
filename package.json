@@ -1,0 +1,30 @@
+{
+  "name": "student-list-hw1",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "check": "tsc --noEmit && eslint .",
+    "test:e2e": "playwright test e2e/student-list.spec.ts",
+    "qa:responsive": "playwright test e2e/responsive-screenshots.spec.ts"
+  },
+  "dependencies": {
+    "next": "^15.5.27",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.27",
+    "sass": "^1.105.1",
+    "typescript": "^5.9.3"
+  }
+}
